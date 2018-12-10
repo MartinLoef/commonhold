@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block page_title %}{{ user }}'s Profile{% endblock %}
+
+{% block page_heading %}{{ user }}'s Profile{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col s8 offset-s2">
+        <p>Welcome {{profile.email}}</p>
+        <p>The result of my staff status check is:  {{profile.is_staff}}</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load materializecss %}
+{% block page_title %}Home Page{% endblock %}
+
+{% block page_heading %}User Login{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col s8 offset-s2">
+        <form method='POST' class="accountform">
+            {% csrf_token %}
+            {{ login_form | materializecss}}
+            <button type='submit'>Login</button>
+        </form>
+        <p><a href="{% url 'password_reset' %}">I forgot my password</a></p>
+    </div>
+</div>
+
+{% endblock %}

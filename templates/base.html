@@ -1,0 +1,51 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'css/customstyle.css' %}">-->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <title>Commonhold</title>
+</head>
+<body>
+<nav>
+    <div id="navbar" class="nav-wrapper">
+        <a href="{% url 'index' %}" class="brand-logo"><i class="material-icons">cloud</i></a>
+        <ul class="right hide-on-med-and-down">
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'profile' %}"><i class="material-icons">face</i></a></li>
+            <li><a href="{% url 'logout' %}"><i class="material-icons">exit_to_app</i></a></li>
+            {% if user.is_staff %}
+            <li><a href="{% url 'registration' %}"><i class="material-icons">person_add</i></a></li>
+            <li><a href="{% url 'accounts' %}"><i class="material-icons">group</i></a></li>
+            {% endif %}
+        {%  else %}
+            <li><a href="{% url 'login' %}"><i class="material-icons">person</i></a></li>
+            
+        {% endif %}
+        </ul>
+    </div>
+</nav>
+<h1>{% block page_heading %}{% endblock %}</h1>
+    <hr>
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% block content %}{% endblock %}   
+    
+    <footer>
+        <div class="container">
+            <p>Made by An Loef Dude</p>
+        </div>
+    </footer>
+</body>
+</html>
