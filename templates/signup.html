@@ -1,0 +1,17 @@
+{% autoescape off %}
+Hi {{ user.username }},
+
+Welcome to out Commonhold community.
+We have created a new account for you, which you can use to login on out commuity page.
+In order to use this account, please go to the following link to set an initial password:
+
+http://{{ domain }}{% url 'password_reset' %}
+
+After providing your email address for a password reset, you will receive a new email with a password reset token.
+
+We are happy to see you on out community page and our next commonhold meetings.
+
+With kind regards,
+Commold Board Members.
+
+{% endautoescape %}

@@ -1,16 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row row-flex">
-{% for user in users %}
-<div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-    <div class="panel-body">
-        <div class="product" style="background-image: url('{{MEDIA_URL}}{{ product.image }}')"></div>
-    <h3>{{user.name}}</h3>
-    <h3>{{user.email}}</h3>
-    <h3>{{user.is_staff}}</h3>
-    <h3>{{user.last_login}}</h3>
+    <div class="row">
+        <div class="col s8 offset-s2">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Is_Staff</th>
+                        <th>Last_Login</th>
+                        <th>Is_Active</th>
+                        <th>date_joined</th>
+                        
+                    </tr>
+                </thead>
+                {% for user in users %}
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.is_staff}}</td>
+                    <td>{{user.last_login}}</td>
+                    <td>{{user.is_active}}</td>
+                    <td>{{user.date_joined}}</td>
+                    <td><a href="/" class="btn btn-default">Suspend</a></td>
+                    <td><a href="/" class="btn btn-default">Activate</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="row center">
+                <a href="{% url 'registration' %}" class="btn btn-default">Add an User</a>
+            </div>
+        </div>
     </div>
-</div>
-{% endfor %}
 </div>
 {% endblock %}
